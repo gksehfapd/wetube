@@ -8,7 +8,7 @@
 /users/:id -> See User
 /users/logout -> Log Out
 /users/edit -> Edit MY Profile
-/users/delete -> Delete user
+/users/delete -> Delete MY Profile
 
 /videos/:id -> See Video
 /videos/:id/edit -> Edit Video
