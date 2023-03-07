@@ -1,6 +1,5 @@
 import express from 'express'
 import {
-	edit,
 	logout,
 	see,
 	startGithubLogin,
