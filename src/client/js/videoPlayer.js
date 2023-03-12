@@ -132,9 +132,7 @@ timeline.addEventListener('input', handleTimelineChange)
 fullScreenBtn.addEventListener('click', handleFullscreen)
 form.addEventListener('focusin', () => {
 	focusForm = true
-	console.log('focus')
 })
 form.addEventListener('focusout', () => {
 	focusForm = false
-	console.log('focussout')
 })
