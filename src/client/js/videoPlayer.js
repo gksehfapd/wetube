@@ -4,7 +4,7 @@ const playBtnIcon = playBtn.querySelector('i')
 const muteBtn = document.getElementById('mute')
 const muteBtnIcon = muteBtn.querySelector('i')
 const volumeRange = document.getElementById('volume')
-const currenTime = document.getElementById('currenTime')
+const currentTime = document.getElementById('currenTime')
 const totalTime = document.getElementById('totalTime')
 const timeline = document.getElementById('timeline')
 const fullScreenBtn = document.getElementById('fullScreen')
@@ -17,7 +17,7 @@ let controlsMovementTimeout = null
 let volumeValue = 0.5
 video.volume = volumeValue
 
-const handlePlayClick = (e) => {
+const handlePlayClick = () => {
 	if (video.paused) {
 		video.play()
 	} else {
@@ -26,7 +26,14 @@ const handlePlayClick = (e) => {
 	playBtnIcon.classList = video.paused ? 'fas fa-play' : 'fas fa-pause'
 }
 
-const handleMuteClick = (e) => {
+const handleHitSpace = (event) => {
+	if (event.keyCode == 32) {
+		event.preventDefault()
+		handlePlayClick()
+	}
+}
+
+const handleMuteClick = () => {
 	if (video.muted) {
 		video.muted = false
 	} else {
@@ -56,7 +63,7 @@ const handleLoadedMetadata = () => {
 }
 
 const handleTimeUpdate = () => {
-	currenTime.innerText = formatTime(Math.floor(video.currentTime))
+	currentTime.innerText = formatTime(Math.floor(video.currentTime))
 	timeline.value = Math.floor(video.currentTime)
 }
 
@@ -104,7 +111,9 @@ const handleEnded = () => {
 	})
 }
 
+window.addEventListener('keydown', handleHitSpace)
 playBtn.addEventListener('click', handlePlayClick)
+video.addEventListener('click', handlePlayClick)
 muteBtn.addEventListener('click', handleMuteClick)
 volumeRange.addEventListener('input', handleVolumeChange)
 video.addEventListener('loadeddata', handleLoadedMetadata)
