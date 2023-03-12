@@ -15,6 +15,8 @@ const videoControls = document.getElementById('videoControls')
 let controlsTimeout = null
 let controlsMovementTimeout = null
 let volumeValue = 0.5
+let mouseoverVideo = false
+
 video.volume = volumeValue
 
 const handlePlayClick = () => {
@@ -27,9 +29,13 @@ const handlePlayClick = () => {
 }
 
 const handleHitSpace = (event) => {
-	if (event.keyCode == 32) {
-		event.preventDefault()
-		handlePlayClick()
+	if (mouseoverVideo === true) {
+		if (event.keyCode == 32) {
+			event.preventDefault()
+			handlePlayClick()
+		}
+	} else {
+		event.preventDefault = false
 	}
 }
 
@@ -123,3 +129,9 @@ videoContainer.addEventListener('mousemove', handleMouseMove)
 videoContainer.addEventListener('mouseleave', handleMouseLeave)
 timeline.addEventListener('input', handleTimelineChange)
 fullScreenBtn.addEventListener('click', handleFullscreen)
+videoContainer.addEventListener('mouseenter', () => {
+	mouseoverVideo = true
+})
+videoContainer.addEventListener('mouseleave', () => {
+	mouseoverVideo = false
+})
