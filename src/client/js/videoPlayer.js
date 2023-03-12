@@ -11,11 +11,12 @@ const fullScreenBtn = document.getElementById('fullScreen')
 const fullScreenIcon = fullScreenBtn.querySelector('i')
 const videoContainer = document.getElementById('videoContainer')
 const videoControls = document.getElementById('videoControls')
+const form = document.getElementById('commentForm')
 
 let controlsTimeout = null
 let controlsMovementTimeout = null
 let volumeValue = 0.5
-let mouseoverVideo = false
+let focusForm = false
 
 video.volume = volumeValue
 
@@ -29,7 +30,7 @@ const handlePlayClick = () => {
 }
 
 const handleHitSpace = (event) => {
-	if (mouseoverVideo === true) {
+	if (focusForm === false) {
 		if (event.keyCode == 32) {
 			event.preventDefault()
 			handlePlayClick()
@@ -129,9 +130,11 @@ videoContainer.addEventListener('mousemove', handleMouseMove)
 videoContainer.addEventListener('mouseleave', handleMouseLeave)
 timeline.addEventListener('input', handleTimelineChange)
 fullScreenBtn.addEventListener('click', handleFullscreen)
-videoContainer.addEventListener('mouseenter', () => {
-	mouseoverVideo = true
+form.addEventListener('focusin', () => {
+	focusForm = true
+	console.log('focus')
 })
-videoContainer.addEventListener('mouseleave', () => {
-	mouseoverVideo = false
+form.addEventListener('focusout', () => {
+	focusForm = false
+	console.log('focussout')
 })
