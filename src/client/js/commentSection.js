@@ -1,5 +1,6 @@
 const videoContainer = document.getElementById('videoContainer')
 const form = document.getElementById('commentForm')
+const username = document.getElementById('username')
 
 const addComment = (text, id) => {
 	const videoComments = document.querySelector('.video__comments ul')
@@ -9,7 +10,7 @@ const addComment = (text, id) => {
 	const icon = document.createElement('i')
 	icon.className = 'fas fa-comment'
 	const span = document.createElement('span')
-	span.innerText = ` ${text}`
+	span.innerText = `${text}`
 	const span2 = document.createElement('span')
 	span2.innerText = '❌'
 	newComment.appendChild(icon)
@@ -21,7 +22,7 @@ const addComment = (text, id) => {
 const handleSubmit = async (event) => {
 	event.preventDefault()
 	const textarea = form.querySelector('textarea')
-	const text = textarea.value
+	const text = username.innerText + ' : ' + textarea.value
 	const videoId = videoContainer.dataset.id
 	if (text === '') {
 		return
