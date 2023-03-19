@@ -43,7 +43,7 @@ block content
                     i.fas.fa-comment
                     span #{comment.text}
                     if String(comment.owner) === String(loggedInUser._id)
-                        span ❌
+                        span#delete__comment ❌
 
 
 block scripts

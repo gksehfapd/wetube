@@ -18,6 +18,19 @@
 		}
 	}
 }
+
+.video__comment-form {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	textarea {
+		height: 20px;
+		width: 70%;
+		padding-left: 10px;
+		padding-top: 3px;
+	}
+}
+
 .video__comments {
 	display: flex;
 	flex-direction: column;
