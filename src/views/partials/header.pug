@@ -7,6 +7,7 @@ header
                 a(href="/search")
                     i.fas.fa-search
             if loggedIn
+                li#username #{loggedInUser.name}
                 li
                     a(href="/videos/upload") Upload Video
                 li
