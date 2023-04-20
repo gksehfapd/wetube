@@ -14,3 +14,6 @@
 /videos/:id/edit -> Edit Video
 /videos/:id/delete -> Delete Video
 /videos/:id/upload -> Upload Video
+
+heroku ps:scale web=0 -> 서버 중지
+heroku ps:scale web=1 -> 서버 실행
